@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohsin Wajid — Unity Game Developer</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: #f7f7f5; color: #1a1a1a; line-height: 1.6; }
+    a { color: #1a6fc4; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* HEADER */
+    .header { padding-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; margin-bottom: 2rem; }
+    .name { font-size: 2rem; font-weight: 700; color: #111; }
+    .tagline { font-size: 1rem; color: #555; margin-top: 4px; }
+    .contact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .contact a { font-size: 13px; color: #1a6fc4; border: 1px solid #b8d4f0; padding: 5px 12px; border-radius: 6px; background: #f0f6ff; }
+    .contact a:hover { background: #ddeeff; text-decoration: none; }
+
+    /* PLATFORMS */
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin: 1.75rem 0 0.6rem; }
+    .platforms { display: flex; flex-wrap: wrap; gap: 8px; }
+    .platform-badge { font-size: 12px; padding: 4px 12px; border-radius: 20px; background: #efefef; color: #444; border: 1px solid #ddd; }
+
+    /* FILTERS */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.2rem; }
+    .filter-btn { font-size: 12px; padding: 5px 16px; border-radius: 20px; border: 1px solid #ccc; background: #fff; color: #555; cursor: pointer; transition: all 0.15s; }
+    .filter-btn:hover { border-color: #1a6fc4; color: #1a6fc4; }
+    .filter-btn.active { background: #1a6fc4; color: #fff; border-color: #1a6fc4; }
+
+    /* GRID */
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .game-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 7px; transition: box-shadow 0.15s; }
+    .game-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); border-color: #ccc; }
+    .game-name { font-size: 14px; font-weight: 600; color: #111; line-height: 1.35; }
+    .game-genre { font-size: 12px; color: #777; }
+    .studio-badge { display: inline-block; font-size: 11px; padding: 2px 9px; border-radius: 20px; background: #f0f0f0; color: #555; margin-top: 2px; }
+    .game-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 10px; border-top: 1px solid #f0f0f0; }
+    .store-link { font-size: 11px; padding: 4px 10px; border-radius: 6px; border: 1px solid #ddd; color: #444; background: #fafafa; }
+    .store-link:hover { background: #f0f6ff; border-color: #1a6fc4; color: #1a6fc4; text-decoration: none; }
+    .store-link.placeholder { opacity: 0.4; cursor: default; font-style: italic; pointer-events: none; }
+
+    /* NOTE */
+    .note { font-size: 13px; color: #666; background: #fffbea; border-radius: 8px; padding: 12px 16px; margin-top: 2rem; border-left: 3px solid #f0c040; }
+
+    /* FOOTER */
+    .footer { text-align: center; font-size: 12px; color: #aaa; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e5e5e5; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="name">Mohsin Wajid</div>
+    <div class="tagline">Unity Game Developer &nbsp;·&nbsp; Mobile &nbsp;·&nbsp; Hyper-Casual &nbsp;·&nbsp; Monetization &nbsp;·&nbsp; Lahore, Pakistan</div>
+    <div class="contact">
+      <a href="tel:+923046922633">+92 304 692 2633</a>
+      <a href="mailto:mohsinwajid002@gmail.com">mohsinwajid002@gmail.com</a>
+      <a href="https://github.com/mohsinwajid" target="_blank">github.com/mohsinwajid</a>
+    </div>
+  </div>
+
+  <div class="section-label">Published on</div>
+  <div class="platforms">
+    <span class="platform-badge">Google Play</span>
+    <span class="platform-badge">Samsung Galaxy Store</span>
+    <span class="platform-badge">CrazyGames</span>
+    <span class="platform-badge">Palm Store</span>
+    <span class="platform-badge">Russian Store (RuStore)</span>
+  </div>
+
+  <div class="section-label">Games (15+)</div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filter('all', this)">All</button>
+    <button class="filter-btn" onclick="filter('TeraFort', this)">TeraFort</button>
+    <button class="filter-btn" onclick="filter('GlistenSoftz', this)">GlistenSoftz</button>
+    <button class="filter-btn" onclick="filter('Vie Apps Studio', this)">Vie Apps Studio</button>
+  </div>
+
+  <div class="games-grid" id="grid"></div>
+
+  <div class="note">
+    Links marked "add link" are placeholders. Replace the <code>#add-link</code> values in the HTML with your real Play Store / store URLs to activate them.
+  </div>
+
+  <div class="footer">Mohsin Wajid &nbsp;·&nbsp; Unity Game Developer &nbsp;·&nbsp; mohsinwajid002@gmail.com</div>
+
+</div>
+
+<script>
+const games = [
+  { name: "Gun Games 3D: Gun Shooting Game", studio: "TeraFort", genre: "Action / Shooter", links: { "Play Store": "#add-link" } },
+  { name: "Mini Car Rush", studio: "TeraFort", genre: "Endless Runner", links: { "Play Store": "#add-link" } },
+  { name: "Car Ramp 3D", studio: "TeraFort", genre: "Hyper-Casual Stunt", links: { "Play Store": "#add-link" } },
+  { name: "ASMR Wildlife Rescue", studio: "TeraFort", genre: "Casual / Educational", links: { "Play Store": "#add-link", "Samsung": "#add-link" } },
+  { name: "ABC Kids – Tracing & Phonics", studio: "GlistenSoftz", genre: "Kids / Education", links: { "Play Store": "#add-link" } },
+  { name: "Car Highway Traffic Racing", studio: "GlistenSoftz", genre: "Racing", links: { "Play Store": "#add-link" } },
+  { name: "Earn to Survive", studio: "GlistenSoftz", genre: "2D Action / Survival", links: { "Play Store": "#add-link" } },
+  { name: "Long Neck Run", studio: "Vie Apps Studio", genre: "Hyper-Casual Runner", links: { "Play Store": "#add-link", "CrazyGames": "#add-link" } },
+  { name: "Delete Story: Mind Puzzle", studio: "Vie Apps Studio", genre: "Puzzle", links: { "Play Store": "#add-link" } },
+  { name: "Real Cake Baking Art", studio: "Vie Apps Studio", genre: "Casual / Simulation", links: { "Play Store": "#add-link" } },
+  { name: "Soccer League: Football Game", studio: "Vie Apps Studio", genre: "Sports / 2D", links: { "Play Store": "#add-link" } },
+  { name: "Monster Makeover", studio: "Vie Apps Studio", genre: "Casual / Customization", links: { "Play Store": "#add-link" } },
+  { name: "Bunker Bed Design", studio: "Vie Apps Studio", genre: "Casual / Design", links: { "Play Store": "#add-link" } },
+  { name: "Kids Learning", studio: "Vie Apps Studio", genre: "Kids / Education", links: { "Play Store": "#add-link" } },
+  { name: "Fruit Crush", studio: "Vie Apps Studio", genre: "Casual / Puzzle", links: { "Play Store": "#add-link" } },
+  { name: "Hexa Puzzle", studio: "Vie Apps Studio", genre: "Puzzle", links: { "Play Store": "#add-link" } },
+  { name: "Spy: Silent Revenge", studio: "GlistenSoftz", genre: "3D Tactical Shooter", links: { "Play Store": "#add-link" } },
+];
+
+let active = 'all';
+
+function filter(studio, btn) {
+  active = studio;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function render() {
+  const grid = document.getElementById('grid');
+  const filtered = active === 'all' ? games : games.filter(g => g.studio === active);
+  grid.innerHTML = filtered.map(g => {
+    const linkHtml = Object.entries(g.links).map(([label, url]) =>
+      url === '#add-link'
+        ? `<span class="store-link placeholder">${label}: add link</span>`
+        : `<a class="store-link" href="${url}" target="_blank">${label}</a>`
+    ).join('');
+    return `
+      <div class="game-card">
+        <div class="game-name">${g.name}</div>
+        <div class="game-genre">${g.genre}</div>
+        <span class="studio-badge">${g.studio}</span>
+        <div class="game-links">${linkHtml}</div>
+      </div>`;
+  }).join('');
+}
+
+render();
+</script>
+</body>
+</html>
